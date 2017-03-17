@@ -2563,6 +2563,7 @@ NPY_NO_EXPORT void
         const @ftype@ in1i = ((@ftype@ *)ip1)[1];
         *((@ftype@ *)op1) = npy_hypot@c@(in1r, in1i);
     }
+    npy_clear_floatstatus();
 }
 
 NPY_NO_EXPORT void
