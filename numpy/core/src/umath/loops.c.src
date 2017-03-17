@@ -1525,6 +1525,13 @@ NPY_NO_EXPORT void
  * The recursion depth is O(lg n) as well.
  * when updating also update similar complex floats summation
  */
+#if defined(__ICC) || defined(__INTEL_COMPILER)
+#ifdef _MSC_VER
+#pragma intel optimization_level 1
+#else
+#pragma intel optimization_level 2
+#endif
+#endif
 static @type@
 pairwise_sum_@TYPE@(@dtype@ *a, npy_uintp n, npy_intp stride)
 {
@@ -2259,6 +2266,13 @@ HALF_ldexp_long(char **args, npy_intp *dimensions, npy_intp *steps, void *NPY_UN
  */
 
 /* similar to pairwise sum of real floats */
+#if defined(__ICC) || defined(__INTEL_COMPILER)
+#ifdef _MSC_VER
+#pragma intel optimization_level 1
+#else
+#pragma intel optimization_level 2
+#endif
+#endif
 static void
 pairwise_sum_@TYPE@(@ftype@ *rr, @ftype@ * ri, @ftype@ * a, npy_uintp n,
                     npy_intp stride)
